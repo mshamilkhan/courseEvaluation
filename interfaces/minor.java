@@ -2,10 +2,13 @@ package interfaces;
 import javax.swing.*;
 
 import controllers.Controller;
-import domainLayer.validation;
+import domainLayer.minorValidation;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
+
 public class minor{
     static JFrame minor;
     public static void minorinterface(){
@@ -88,7 +91,7 @@ public class minor{
                 String selectedMajorText = (String) dropdown.getSelectedItem();
                 //  validation.minorinfoprocess(minorNameText, minorMarksText, minorWeightText, selectedMajorText);
              String[] minorParams=  Controller.getMinorParam(minorNameText, minorMarksText, minorWeightText, selectedMajorText);
-                validation.minorinfoprocess(minorParams[0],minorParams[1],minorParams[2],minorParams[3]);
+                minorValidation.minorinfoprocess(minorParams[0],minorParams[1],minorParams[2],minorParams[3]);
             }
         });
         //  backminor.addActionListener(new ActionListener() {
