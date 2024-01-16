@@ -94,11 +94,12 @@ public class minor{
                 minorValidation.minorinfoprocess(minorParams[0],minorParams[1],minorParams[2],minorParams[3]);
             }
         });
-        //  backminor.addActionListener(new ActionListener() {
-        //     @Override
-        //     public void actionPerformed(ActionEvent e) {
-                
-        // });
+         backminor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                minor.dispose();
+            }
+        });
 
         minor.setVisible(true);
     }

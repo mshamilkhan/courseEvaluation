@@ -1,5 +1,6 @@
 package domainLayer;
 import databaseLayer.dbController;
+import databaseLayer.minorDb;
 import interfaces.minor;
 
 
@@ -17,7 +18,7 @@ public class minorValidation{
                     
                     minoralert.showSuccessMessage("This is a success message!");
                     dbController.getMinorParamDb(minorNameText, minorMarksText, minorWeightText);
-               
+                    minorDb.minorDB(minorNameText, minorMarksText, minorWeightText);
                 }
 
 
