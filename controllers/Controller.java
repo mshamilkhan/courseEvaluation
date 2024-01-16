@@ -54,6 +54,11 @@ public class Controller {
     String[] minorParams = {minorNameText, minorMarksText, minorWeightText, selectedMajorText};
         return minorParams;
     }
+        
+    public static String[] getMajorParam(String majorNameText,String majorWeightText,String selectedMajorText){
+    String[] majorParams = {majorNameText, majorWeightText, selectedMajorText};
+        return majorParams;
+    }
 
 
     

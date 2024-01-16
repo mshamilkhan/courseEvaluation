@@ -55,7 +55,7 @@ public class minor{
         
         JLabel SelectMajor = new JLabel("Select Major Instrument");
         SelectMajor.setBounds(650, ycord+300, 500, 50);
-    SelectMajor.setForeground(Color.BLACK);
+        SelectMajor.setForeground(Color.BLACK);
         SelectMajor.setFont(lablefont);
         c.add(SelectMajor);
 
@@ -89,7 +89,6 @@ public class minor{
                 String minorMarksText = MinorMarksInput.getText();
                 String minorWeightText = MinorWeightInput.getText();
                 String selectedMajorText = (String) dropdown.getSelectedItem();
-                //  validation.minorinfoprocess(minorNameText, minorMarksText, minorWeightText, selectedMajorText);
              String[] minorParams=  Controller.getMinorParam(minorNameText, minorMarksText, minorWeightText, selectedMajorText);
                 minorValidation.minorinfoprocess(minorParams[0],minorParams[1],minorParams[2],minorParams[3]);
             }

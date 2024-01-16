@@ -29,7 +29,6 @@ public class minorValidation {
 
                 // Call the 'getMinorParamDb' method from the 'dbController' class
                 dbController.getMinorParamDb(minorNameText, minorMarksText, minorWeightText);
-
                 // Call the 'minorDB' method from the 'minorDb' class
                 minorDb.minorDB(minorNameText, minorMarksText, minorWeightText);
             }
