@@ -25,7 +25,7 @@ String[] columnNames = {"Major id", "Major Name" , "Major Percentage"};
 
 DefaultTableModel model = new DefaultTableModel(data, columnNames);
    table = new JTable(model);
-
+   table.setEnabled(false);
 
     c.add(new JScrollPane(table));
     c.revalidate();

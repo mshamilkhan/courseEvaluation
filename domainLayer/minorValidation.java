@@ -28,9 +28,9 @@ public class minorValidation {
                 minoralert.showSuccessMessage("This is a success message!");
 
                 // Call the 'getMinorParamDb' method from the 'dbController' class
-                dbController.getMinorParamDb(minorNameText, minorMarksText, minorWeightText);
+                dbController.getMinorParamDb(minorNameText, minorMarksText, minorWeightText,selectedMajorText);
                 // Call the 'minorDB' method from the 'minorDb' class
-                minorDb.minorDB(minorNameText, minorMarksText, minorWeightText);
+                minorDb.minorDB(minorNameText, minorMarksText, minorWeightText,selectedMajorText);
             }
         }
     }
@@ -44,5 +44,8 @@ public class minorValidation {
             return false;
         }
     }
+
+
+    
 }
  

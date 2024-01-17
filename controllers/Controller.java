@@ -59,6 +59,18 @@ public class Controller {
     String[] majorParams = {majorNameText, majorWeightText, selectedMajorText};
         return majorParams;
     }
+    public static String[] getMinEditParam(String majorNameText,String minorNameText){
+    String[] minorEditParams = {majorNameText, minorNameText};
+        return minorEditParams;
+    }
+    public static String getEditMajorParam(String majorWeightText){
+    return majorWeightText;
+    }
+    public static String getDelMajorParam(String major){
+    return major;
+    }
+
+    
 
 
     

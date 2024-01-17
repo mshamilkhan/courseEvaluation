@@ -47,16 +47,14 @@ public class MajWeightUI {
         c.add(course);
 
         // Creating a String array for dropdown options
-        String[] options = {"Quizzes", "Assignments", "Mid Terms", "Finals"};
+        String[] options = {"101", "102", "103", "104"};
 
         // Creating a JComboBox and adding options
         JComboBox<String> dropdown = new JComboBox<>(options);
         dropdown.setBounds(650, 600, 500, 50);
         c.add(dropdown);
 
-        // JTextField courseinput = new JTextField();
-        // courseinput.setBounds(650, 600, 500, 50);
-        // c.add(courseinput);
+       
 
         JButton confirm = new JButton("Confirm");
         confirm.setBounds(650, 700, 200, 50);

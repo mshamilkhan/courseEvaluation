@@ -3,8 +3,8 @@ package databaseLayer;
 import java.sql.*;
 
 public class minorDb {
-    public static void minorDB(String minorNameText, String minorMarksText, String minorWeightText) {
-        String[] minorParams = dbController.getMinorParamDb(minorNameText, minorMarksText, minorWeightText);
+    public static void minorDB(String minorNameText, String minorMarksText, String minorWeightText, String selectedMajorText) {
+        String[] minorParams = dbController.getMinorParamDb(minorNameText, minorMarksText, minorWeightText,selectedMajorText);
 
         // Call the getMinorParamDb method and get the result
 
@@ -28,12 +28,13 @@ public class minorDb {
 
             // Creating a statement
             statement = connection.createStatement();
-            String insertQuery = "INSERT INTO minor_instrument (minor_name, minor_marks, minor_weight) VALUES (?, ?, ?)";
+            String insertQuery = "INSERT INTO minor_instrument (minor_name, minor_marks, minor_weight, major_name) VALUES (?, ?, ?, ?)";
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                 preparedStatement.setString(1, minorParams[0]); 
                 preparedStatement.setString(2, minorParams[1]); 
                 preparedStatement.setString(3, minorParams[2]); 
+                preparedStatement.setString(4, minorParams[3]); 
 
                 int rowsAffected = preparedStatement.executeUpdate();
 

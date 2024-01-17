@@ -1,9 +1,17 @@
 package interfaces;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+
+import controllers.Controller;
+import domainLayer.editMaj;
+
 import java.awt.*;
 public class editMajor{
+static JFrame editMajorframe;
     public static void editMajorUI(){
-        JFrame editMajorframe = new JFrame();
+     editMajorframe = new JFrame();
         editMajorframe.setSize(1920, 1080);
         // editMajorframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        Container c = editMajorframe.getContentPane();
@@ -40,6 +48,7 @@ public class editMajor{
         JTextField weightinput = new JTextField();
         weightinput.setBounds(650, ycord+150, 500, 50);
         c.add(weightinput);
+        
 
        JButton next = new JButton("edit");
        next.setBounds(650, ycord+250, 200, 50);
@@ -48,14 +57,76 @@ public class editMajor{
        next.setForeground(Color.WHITE);
        c.add(next);
 
-       JButton cancel = new JButton("cancel");
-       cancel.setBounds(950, ycord+250, 200, 50);
+       JButton back = new JButton("back");
+       back.setBounds(950, ycord+250, 200, 50);
       
-       c.add(cancel);
+       c.add(back);
+
+next.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                String majorWeightText = weightinput.getText();
+                String majorDd = (String) dropdown.getSelectedItem();
+             
+                Controller.getEditMajorParam(majorWeightText);
+                
+                editMaj.majorProcEditInfo(majorWeightText, majorDd);
+
+            }
+        });
+
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                editMajorframe.dispose();
+            }
+        });
 
 
+
+        fetchDataFromDatabase(dropdown);
        editMajorframe.setVisible(true);
 
 
     }
+
+    public void showError(String errorMessage) {
+        JOptionPane.showMessageDialog(editMajorframe, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+  
+    public void showSuccessMessage(String message) {
+        
+        JOptionPane.showMessageDialog(editMajorframe, message, "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+private static void fetchDataFromDatabase(JComboBox<String> comboBox) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/courseevaluationdb";
+        String username = "root";
+        String password = "QwertyQwerty11,";
+
+        String sql = "SELECT major_name FROM major_instrument";
+
+        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            // Clear existing items
+            comboBox.removeAllItems();
+
+            // Add items from the database to the JComboBox
+            while (resultSet.next()) {
+                String itemName = resultSet.getString("major_name");
+                comboBox.addItem(itemName);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+
+    
 }

@@ -6,11 +6,11 @@ import interfaces.MajWeightUI;
 
 
 public class major {
-    public static void majorinfoprocess(String majorNameText, String majorWeightText, String selectedMajorText) {
+    public static void majorinfoprocess(String majorNameText, String majorWeightText, String courseCode) {
         // Create an instance of the 'major' class to handle alerts/messages
         MajWeightUI majoralert = new MajWeightUI();
         System.out.println("major Name: " + majorNameText);
-        if (selectedMajorText.isEmpty() || majorNameText.isEmpty() || majorWeightText.isEmpty()) {
+        if (courseCode.isEmpty() || majorNameText.isEmpty() || majorWeightText.isEmpty()) {
             majoralert.showError("Error: Some fields are null.");
         } else {
             // Check if both major marks and weight are numeric
@@ -21,13 +21,16 @@ public class major {
                 majoralert.showSuccessMessage("This is a success message!");
 
                
-                // dbController.getmajorParamDb(majorNameText, majorMarksText, majorWeightText);
+                dbController.getMajorParamDb(majorNameText, majorWeightText, courseCode);
 
                 
-                // majorDb.majorDB(majorNameText, majorMarksText, majorWeightText);
+                majorDb.majorDB(majorNameText, majorWeightText, courseCode);
             }
         }
     }
+
+    
+
 
     // Utility method to check if a string is numeric
     private static boolean isNumeric(String str) {
